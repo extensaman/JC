@@ -1,4 +1,4 @@
-package by.home.lesson02.task02;
+package home.chapter00entry.task02;
 
 /**
 * Занятие №02
