@@ -46,6 +46,7 @@ public abstract class Student {
 
     public static final int FULL_TIME_FOR_BEST_STUDENT = 198;
 
+    private Resultable resultable;
     private double talantLevel;
     private double razborTime;
     private double praktikaTime;
@@ -56,6 +57,26 @@ public abstract class Student {
         razborTime = 0.0;
         praktikaTime = 0.0;
         potokTime = 0.0;
+    }
+
+    public void setResultable(Resultable resultable) {
+        this.resultable = resultable;
+    }
+
+    public double getTalantLevel() {
+        return talantLevel;
+    }
+
+    public double getRazborTime() {
+        return razborTime;
+    }
+
+    public double getPraktikaTime() {
+        return praktikaTime;
+    }
+
+    public double getPotokTime() {
+        return potokTime;
     }
 
     public void setRazborTime(double razborTime) {
@@ -70,17 +91,13 @@ public abstract class Student {
         this.potokTime = potokTime;
     }
 
-    public double calculateSummaryTime() {
-        return  (razborTime + potokTime + praktikaTime) / talantLevel;
-    }
-
     @Override
     public String toString() {
         return "\nТалант: " + talantLevel +
                 "\nВремя на разбор: " + razborTime +
                 "\nВремя на практику: " + praktikaTime +
                 "\nВремя на поток: " + potokTime +
-                "\nСумарное время на освоение навыка: " + calculateSummaryTime() +
+                "\nСумарное время на освоение навыка: " + resultable.calculateSummaryTime(this) +
                 '\n';
     }
 }
