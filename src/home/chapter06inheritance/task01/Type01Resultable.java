@@ -1,4 +1,4 @@
-package home.chapter06inheritance.task01;
+/*package home.chapter06inheritance.task01;
 
 public class Type01Resultable implements Resultable{
 
@@ -6,4 +6,4 @@ public class Type01Resultable implements Resultable{
     public double calculateSummaryTime(Student student) {
         return (student.getRazborTime() + student.getPotokTime() + student.getPraktikaTime()) / student.getTalantLevel();
     }
-}
+}*/

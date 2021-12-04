@@ -7,7 +7,7 @@ public final class Type01Student extends Student{
         super.setPotokTime(time);
         super.setPraktikaTime(time);
         super.setRazborTime(time);
-        super.setResultable(new Type01Resultable());
+        super.setResultable(student -> (FULL_TIME_FOR_BEST_STUDENT / student.getTalantLevel())); //new Type01Resultable());
     }
 
     @Override
