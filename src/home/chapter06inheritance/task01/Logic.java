@@ -2,27 +2,24 @@ package home.chapter06inheritance.task01;
 
 public class Logic {
 
-    public static final int FULL_TIME_FOR_BEST_STUDENT = 198;
 
-    public Student simpleFactory (StudentTypes studentType) {
+
+    public StudentBehavior simpleFactory (StudentTypes studentType) {
 
         switch (studentType) {
             case TYPE_01:
-                return new Type01Student(new StudentTalant().generateTalantLevel(),
-                            FULL_TIME_FOR_BEST_STUDENT, new Type01StudentBehavior());
+                return new Type01Student(new StudentTalant().generateTalantLevel());
             case TYPE_02:
-                return new Type02Student(new StudentTalant().generateTalantLevel(),
-                        FULL_TIME_FOR_BEST_STUDENT, new Type02StudentBehavior());
+                return new Type02Student(new StudentTalant().generateTalantLevel());
             case TYPE_03:
-                return new Type03Student(new StudentTalant().generateTalantLevel(),
-                        FULL_TIME_FOR_BEST_STUDENT, new Type03StudentBehavior());
+                return new Type03Student(new StudentTalant().generateTalantLevel());
         }
         return null;
     }
 
-    public Student[] formGroup (int capacity) {
+    public StudentBehavior[] formGroup (int capacity) {
 
-        Student[] group = new Student[capacity];
+        StudentBehavior[] group = new StudentBehavior[capacity];
         int[] busyCell = new int[capacity];
 
         int subGroupsCount = capacity / StudentTypes.values().length;

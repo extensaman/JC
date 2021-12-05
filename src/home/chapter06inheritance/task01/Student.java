@@ -42,35 +42,19 @@ package home.chapter06inheritance.task01;
  * @version 1.0
  */
 
-public abstract class Student {
+public abstract class Student{
 
-    private StudentBehavior studentBehavior;
     private double talantLevel;
-    private double baseTime;
 
-    public Student (double talantLevel, double baseTime, StudentBehavior studentBehavior) {
+
+    public Student (double talantLevel) {
         this.talantLevel = talantLevel;
-        this.baseTime = baseTime;
-        this.studentBehavior = studentBehavior;
-    }
-
-    public StudentBehavior getStudentBehavior() {
-        return studentBehavior;
     }
 
     public double getTalantLevel() {
         return talantLevel;
     }
 
-    public double getBaseTime() {
-        return baseTime;
-    }
-
-    public double calculateStudyingTime() {
-        return (studentBehavior.calculatePotokTime(this) +
-                studentBehavior.calculatePraktikaTime(this) +
-                studentBehavior.calculateRazborTime(this) ) / talantLevel;
-    }
     @Override
     public String toString() {
         return "\nТалант: " + talantLevel;
