@@ -45,10 +45,15 @@ package home.chapter06inheritance.task01;
 public abstract class Student{
 
     private double talantLevel;
+    private double baseTime;
 
-
-    public Student (double talantLevel) {
+    public Student (double talantLevel, double baseTime) {
         this.talantLevel = talantLevel;
+        this.baseTime = baseTime;
+    }
+
+    public double getBaseTime() {
+        return baseTime;
     }
 
     public double getTalantLevel() {

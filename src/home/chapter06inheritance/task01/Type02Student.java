@@ -2,14 +2,14 @@ package home.chapter06inheritance.task01;
 
 public final class Type02Student extends Student implements StudentBehavior{
 
-    public Type02Student(double talantLevel) {
+    public Type02Student(double talantLevel, double baseTime) {
 
-        super(talantLevel);
+        super (talantLevel, baseTime);
     }
 
     @Override
     public double calculateRazborTime() {
-        return Runner.FULL_TIME_FOR_BEST_STUDENT;
+        return super.getBaseTime();
     }
 
     @Override
@@ -19,7 +19,7 @@ public final class Type02Student extends Student implements StudentBehavior{
 
     @Override
     public double calculatePraktikaTime() {
-        return Runner.FULL_TIME_FOR_BEST_STUDENT;
+        return super.getBaseTime();
     }
 
     @Override

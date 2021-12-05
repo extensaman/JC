@@ -2,17 +2,17 @@ package home.chapter06inheritance.task01;
 
 public class Logic {
 
-
+    public static final int FULL_TIME_FOR_BEST_STUDENT = 198;
 
     public StudentBehavior simpleFactory (StudentTypes studentType) {
 
         switch (studentType) {
             case TYPE_01:
-                return new Type01Student(new StudentTalant().generateTalantLevel());
+                return new Type01Student(new StudentTalant().generateTalantLevel(), FULL_TIME_FOR_BEST_STUDENT);
             case TYPE_02:
-                return new Type02Student(new StudentTalant().generateTalantLevel());
+                return new Type02Student(new StudentTalant().generateTalantLevel(), FULL_TIME_FOR_BEST_STUDENT);
             case TYPE_03:
-                return new Type03Student(new StudentTalant().generateTalantLevel());
+                return new Type03Student(new StudentTalant().generateTalantLevel(), FULL_TIME_FOR_BEST_STUDENT);
         }
         return null;
     }
@@ -20,7 +20,6 @@ public class Logic {
     public StudentBehavior[] formGroup (int capacity) {
 
         StudentBehavior[] group = new StudentBehavior[capacity];
-        int[] busyCell = new int[capacity];
 
         int subGroupsCount = capacity / StudentTypes.values().length;
         for (int i = 0; i < subGroupsCount; i++) {
@@ -29,9 +28,8 @@ public class Logic {
                 int index;
                 do {
                     index = (int) (Math.random() * capacity);
-                } while (busyCell[index] != 0);
+                } while (group[index] != null);
 
-                busyCell[index] = 1;
                 group[index] = simpleFactory(StudentTypes.values()[j]);
             }
         }
