@@ -44,60 +44,35 @@ package home.chapter06inheritance.task01;
 
 public abstract class Student {
 
-    public static final int FULL_TIME_FOR_BEST_STUDENT = 198;
-
-    private Resultable resultable;
+    private StudentBehavior studentBehavior;
     private double talantLevel;
-    private double razborTime;
-    private double praktikaTime;
-    private double potokTime;
+    private double baseTime;
 
-    public Student () {
-        this.talantLevel = ((int) (Math.random() * 10.0) + 1) / 10.0;
-        razborTime = 0.0;
-        praktikaTime = 0.0;
-        potokTime = 0.0;
+    public Student (double talantLevel, double baseTime, StudentBehavior studentBehavior) {
+        this.talantLevel = talantLevel;
+        this.baseTime = baseTime;
+        this.studentBehavior = studentBehavior;
     }
 
-    public void setResultable(Resultable resultable) {
-        this.resultable = resultable;
+    public StudentBehavior getStudentBehavior() {
+        return studentBehavior;
     }
 
     public double getTalantLevel() {
         return talantLevel;
     }
 
-    public double getRazborTime() {
-        return razborTime;
+    public double getBaseTime() {
+        return baseTime;
     }
 
-    public double getPraktikaTime() {
-        return praktikaTime;
+    public double calculateStudyingTime() {
+        return (studentBehavior.calculatePotokTime(this) +
+                studentBehavior.calculatePraktikaTime(this) +
+                studentBehavior.calculateRazborTime(this) ) / talantLevel;
     }
-
-    public double getPotokTime() {
-        return potokTime;
-    }
-
-    public void setRazborTime(double razborTime) {
-        this.razborTime = razborTime;
-    }
-
-    public void setPraktikaTime(double praktikaTime) {
-        this.praktikaTime = praktikaTime;
-    }
-
-    public void setPotokTime(double potokTime) {
-        this.potokTime = potokTime;
-    }
-
     @Override
     public String toString() {
-        return "\nТалант: " + talantLevel +
-                "\nВремя на разбор: " + razborTime +
-                "\nВремя на практику: " + praktikaTime +
-                "\nВремя на поток: " + potokTime +
-                "\nСумарное время на освоение навыка: " + resultable.calculateSummaryTime(this) +
-                '\n';
+        return "\nТалант: " + talantLevel;
     }
 }
