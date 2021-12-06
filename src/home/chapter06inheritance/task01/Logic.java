@@ -4,20 +4,20 @@ public class Logic {
 
     public static final int FULL_TIME_FOR_BEST_STUDENT = 198;
 
-    public StudentBehavior simpleFactory (StudentTypes studentType) {
+    public static StudentBehavior simpleFactory (StudentTypes studentType) {
 
         switch (studentType) {
             case TYPE_01:
-                return new Type01Student(new StudentTalant().generateTalantLevel(), FULL_TIME_FOR_BEST_STUDENT);
+                return new Type01Student(StudentTalant.generateTalantLevel(), FULL_TIME_FOR_BEST_STUDENT);
             case TYPE_02:
-                return new Type02Student(new StudentTalant().generateTalantLevel(), FULL_TIME_FOR_BEST_STUDENT);
+                return new Type02Student(StudentTalant.generateTalantLevel(), FULL_TIME_FOR_BEST_STUDENT);
             case TYPE_03:
-                return new Type03Student(new StudentTalant().generateTalantLevel(), FULL_TIME_FOR_BEST_STUDENT);
+                return new Type03Student(StudentTalant.generateTalantLevel(), FULL_TIME_FOR_BEST_STUDENT);
         }
         return null;
     }
 
-    public StudentBehavior[] formGroup (int capacity) {
+    public static StudentBehavior[] formGroup (int capacity) {
 
         StudentBehavior[] group = new StudentBehavior[capacity];
 

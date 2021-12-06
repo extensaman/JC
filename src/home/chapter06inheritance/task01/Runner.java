@@ -6,8 +6,7 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        Logic logic = new Logic();
-        Group group01 = new Group(logic.formGroup(GROUP_DEFAULT_CAPACITY));
+        Group group01 = new Group(Logic.formGroup(GROUP_DEFAULT_CAPACITY));
         group01.printGroup();
 
 
