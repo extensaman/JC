@@ -6,7 +6,7 @@ import home.chapter05strings.task31.entity.Entity;
 public class StringBuilderAppender implements UniteBehavior {
 
     @Override
-    public double calculateUniteTime(Entity entity) {
+    public double calculateUniteTime(Entity entity, int cyclesCount) {
 
         String s = entity.getText();
         StringBuffer stringBuffer = new StringBuffer(s);
@@ -16,7 +16,7 @@ public class StringBuilderAppender implements UniteBehavior {
 
         startTime = System.nanoTime();
 
-        for (i = 0; i < MagicNumbers.CYCLES_COUNT.getValue(); i++) {
+        for (i = 0; i < cyclesCount; i++) {
             stringBuffer.append(s);
         }
 

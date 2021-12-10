@@ -5,6 +5,7 @@ import home.chapter05strings.task31.logic.StringBuilderAppender;
 import home.chapter05strings.task31.logic.StringConcatter;
 import home.chapter05strings.task31.logic.Uniter;
 import home.chapter05strings.task31.misc.MagicNumbers;
+import home.chapter05strings.task31.view.View;
 
 /**
  * Раздел "Строки и регулярные выражения"
@@ -25,17 +26,9 @@ public class Runner {
         Uniter uniterStingBuilder = new Uniter(new StringBuilderAppender());
         Uniter uniterString = new Uniter(new StringConcatter());
 
-        double stringConcatTime = uniterString.calculateTime(entity);
-        System.out.println(MagicNumbers.CYCLES_COUNT.getValue() +
-                            " плюсовых конкатенаций строки \"" + entity + "\" происходят за " +
-                            stringConcatTime + " наносекунд");
+        double stringConcatTime = uniterString.calculateTime(entity, MagicNumbers.CYCLES_COUNT.getValue());
+        double stringBufferAppendTime = uniterStingBuilder.calculateTime(entity, MagicNumbers.CYCLES_COUNT.getValue());
 
-        double stringBufferAppendTime = uniterStingBuilder.calculateTime(entity);
-        System.out.println(MagicNumbers.CYCLES_COUNT.getValue() +
-                " append-ов \"" + entity + "\" происходят за " +
-                stringBufferAppendTime + " наносекунд");
-
-        System.out.println("StringBuffer производительнее String в " +
-                            (stringConcatTime / stringBufferAppendTime) + " раз");
+        View.viewResult(stringConcatTime, stringBufferAppendTime, entity, MagicNumbers.CYCLES_COUNT.getValue());
     }
 }

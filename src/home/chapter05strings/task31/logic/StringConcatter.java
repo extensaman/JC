@@ -5,7 +5,7 @@ import home.chapter05strings.task31.entity.Entity;
 
 public class StringConcatter implements UniteBehavior {
     @Override
-    public double calculateUniteTime(Entity entity) {
+    public double calculateUniteTime(Entity entity, int cyclesCount) {
 
         String result = "";
         String text = entity.getText();
@@ -14,7 +14,7 @@ public class StringConcatter implements UniteBehavior {
 
         startTime = System.nanoTime();
 
-        for (i = 0; i < MagicNumbers.CYCLES_COUNT.getValue(); i++) {
+        for (i = 0; i < cyclesCount; i++) {
             result += text;
         }
 
