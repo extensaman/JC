@@ -1,4 +1,4 @@
-package by.homework.task26;
+package home.chapter05strings.task26;
 
 /**
  * Раздел "Строки и регулярные выражения"
@@ -9,6 +9,8 @@ package by.homework.task26;
  */
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Runner {
 
@@ -18,7 +20,6 @@ public class Runner {
         Scanner sc = new Scanner(System.in);
 
         String str = sc.nextLine();
-
         String stringWithoutPunctuation = str.replaceAll("\\p{Punct}", "");
 
         System.out.println("Количество знаков препинания = " + (str.length() - stringWithoutPunctuation.length()));

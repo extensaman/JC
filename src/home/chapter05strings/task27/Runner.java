@@ -1,4 +1,4 @@
-package by.homework.task27;
+package home.chapter05strings.task27;
 
 /**
  * Раздел "Строки и регулярные выражения"
