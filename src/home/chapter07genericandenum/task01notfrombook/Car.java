@@ -1,5 +1,6 @@
 package home.chapter07genericandenum.task01notfrombook;
 
+import home.chapter07genericandenum.task01notfrombook.engine.DieselEngine;
 import home.chapter07genericandenum.task01notfrombook.engine.Engine;
 
 public class Car <T extends Engine> {
@@ -16,11 +17,20 @@ public class Car <T extends Engine> {
         this.engineType = newEngine;
     }
 
+    public Car<Engine> dublicateCar() {
+        return (Car<Engine>)this.clone();
+    }
+
     @Override
     public String toString() {
         return "Car{" +
                 "engineType=" + engineType +
                 "\nName='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    protected Object clone() {
+        return new Car<Engine>(this.engineType, this.name);
     }
 }

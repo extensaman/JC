@@ -31,5 +31,7 @@ public class Runner {
         Car<Engine> electricEngineCar = new Car<Engine>(new ElectricEngine(2000, 290), "Tesla");
         System.out.println(electricEngineCar);
 
+        Car<Engine> dieselEngineCar02 = dieselEngineCar.dublicateCar();
+        System.out.println(dieselEngineCar02);
     }
 }
