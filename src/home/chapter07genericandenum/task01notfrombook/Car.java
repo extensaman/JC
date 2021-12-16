@@ -1,6 +1,5 @@
 package home.chapter07genericandenum.task01notfrombook;
 
-import home.chapter07genericandenum.task01notfrombook.engine.DieselEngine;
 import home.chapter07genericandenum.task01notfrombook.engine.Engine;
 
 public class Car <T extends Engine> {
@@ -11,6 +10,10 @@ public class Car <T extends Engine> {
     public Car(T engineType, String name) {
         this.engineType = engineType;
         this.name = name;
+    }
+
+    public T getEngineType() {
+        return engineType;
     }
 
     public void changeEngine (T newEngine) {

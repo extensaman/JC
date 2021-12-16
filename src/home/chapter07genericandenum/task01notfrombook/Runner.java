@@ -5,6 +5,12 @@ import home.chapter07genericandenum.task01notfrombook.engine.ElectricEngine;
 import home.chapter07genericandenum.task01notfrombook.engine.Engine;
 import home.chapter07genericandenum.task01notfrombook.engine.PetrolEngine;
 
+import java.io.CharArrayReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * Раздел "Generics и Enum"
  * Задание №01 (не из книги) - домашнее задание 14.12.2021
@@ -33,5 +39,12 @@ public class Runner {
 
         Car<Engine> dieselEngineCar02 = dieselEngineCar.dublicateCar();
         System.out.println(dieselEngineCar02);
+
+        // Работа с Generic-классом в коллекциях (с ипользованием Stream API)
+        List<Car<Engine>> cars = new ArrayList<Car<Engine>>();
+        cars.addAll(Arrays.asList(dieselEngineCar, petrolEngineCar, electricEngineCar, dieselEngineCar02));
+        List<Car<Engine>> notDieselCars = cars.stream().filter(car -> car.getEngineType().getClass() != DieselEngine.class).collect(Collectors.toList());
+        System.out.println("\nНе дизельные машины:");
+        System.out.println(notDieselCars);
     }
 }
