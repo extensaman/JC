@@ -3,15 +3,18 @@ package home.chapter08collection.task41;
 public enum MagicNumbers {
 
     DEFAULT_MARKS_COOUNT (10),
-    DEFAULT_MAX_MARK (10);
+    DEFAULT_MAX_MARK (10),
+    DEFAULT_ADDING_COUNT (100_000),
+    DEFAULT_SAMPLE_SIZE (100_000),
+    DEFAULT_VALUE_FOR_INSERT (100);
 
-    private int mark;
+    private int value;
 
-    MagicNumbers(int mark) {
-        this.mark = mark;
+    MagicNumbers(int value) {
+        this.value = value;
     }
 
-    public int getMark() {
-        return mark;
+    public int getValue() {
+        return value;
     }
 }

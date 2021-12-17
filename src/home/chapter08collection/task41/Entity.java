@@ -12,6 +12,7 @@ public class Entity {
     }
 
     public Entity(List<Integer> list) {
+
         this.list = list;
     }
 
