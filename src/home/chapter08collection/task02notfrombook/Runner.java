@@ -3,6 +3,7 @@ package home.chapter08collection.task02notfrombook;
 import home.chapter08collection.task02notfrombook.model.HeavyBox;
 import home.chapter08collection.task02notfrombook.service.ArrayMakingBehavior;
 import home.chapter08collection.task02notfrombook.service.HeavyBoxService;
+import home.chapter08collection.task02notfrombook.service.HeavyBoxServiceBehavior;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,7 +28,7 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        HeavyBoxService service = new HeavyBoxService();
+        HeavyBoxServiceBehavior service = new HeavyBoxService();
 
         List<HeavyBox> boxList = new ArrayList<>();
 
