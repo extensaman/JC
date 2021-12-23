@@ -2,6 +2,7 @@ package home.chapter08collection.task03notfrombook;
 
 import home.chapter08collection.task03notfrombook.model.Product;
 import home.chapter08collection.task03notfrombook.service.ProductService;
+import home.chapter08collection.task03notfrombook.service.ProductServiceBehavior;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +28,7 @@ public class Runner {
 
         Map<String, Product> map = new HashMap<>();
 
-        ProductService service = new ProductService();
+        ProductServiceBehavior service = new ProductService();
 
         Product product01 = service.getProduct(12.5, 54.92);
         service.putProductToMap(map,"One", product01);
