@@ -2,7 +2,7 @@ package home.chapter08collection.task03notfrombook.model;
 
 import java.util.Objects;
 
-public class Product {
+public final class Product {
 
     private final double size;
     private final double price;
@@ -26,7 +26,7 @@ public class Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(size, price);
+        return 31 * Double.hashCode(size) + Double.hashCode(price);
     }
 
     public double getSize() {
