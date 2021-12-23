@@ -7,10 +7,10 @@ import java.util.Objects;
 
 public final class Student {
 
-    private String FIO;
-    private String group;
-    private int course;
-    private int[] marks;
+    private final String FIO;
+    private final String group;
+    private final int course;
+    private final int[] marks;
 
     public Student(String FIO, String group, int course, int[] marks) {
         this.FIO = FIO;
@@ -43,22 +43,6 @@ public final class Student {
 
     public int[] getMarks() {
         return marks;
-    }
-
-    public void setFIO(String FIO) {
-        this.FIO = FIO;
-    }
-
-    public void setGroup(String group) {
-        this.group = group;
-    }
-
-    public void setCourse(int course) {
-        this.course = course;
-    }
-
-    public void setMarks(int[] marks) {
-        this.marks = marks;
     }
 
     @Override

@@ -4,6 +4,7 @@ import home.chapter08collection.task04notfrombook.model.Student;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -29,8 +30,27 @@ public class StudentsService implements StudentServiceBehavior{
     @Override
     public void promoteStudentsNextCourse(Set<Student> set, double marksLowLimit) {
 
-        set.stream().filter(s -> IntStream.of(s.getMarks()).sum() / (double) s.getMarks().length >= marksLowLimit)
-                .forEach(s -> s.setCourse(s.getCourse() + 1));
+        Set<Student> promotedStudents = new HashSet<>();
+
+        Iterator<Student> iterator = set.iterator();;
+
+        while(iterator.hasNext()) {
+
+            int sum = 0;
+            Student oldStudent = iterator.next();
+
+            for (int mark : oldStudent.getMarks()) {
+                sum += mark;
+            }
+
+            if (sum / (double) oldStudent.getMarks().length >= marksLowLimit) {
+                    promotedStudents.add(createStudent(oldStudent.getFIO(), oldStudent.getGroup(),
+                            oldStudent.getCourse() + 1, oldStudent.getMarks()));
+                    iterator.remove();
+                }
+            }
+
+        set.addAll(promotedStudents);
     }
 
     @Override

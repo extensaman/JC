@@ -27,7 +27,7 @@ import java.util.stream.IntStream;
 public class Runner {
 
     public static final double MARKS_LIMIT = 3.0;
-    public static final int COURSE_FOR_PRINT = 4;
+    public static final int COURSE_FOR_PRINT = 3;
 
     public static void main(String[] args) {
 
@@ -49,7 +49,7 @@ public class Runner {
         service.promoteStudentsNextCourse(set, MARKS_LIMIT);
         service.prinAllStudents(set);
 
-        service.printStudentsInCourse(set, COURSE_FOR_PRINT);;
+        service.printStudentsInCourse(set, COURSE_FOR_PRINT);
     }
 
 }
