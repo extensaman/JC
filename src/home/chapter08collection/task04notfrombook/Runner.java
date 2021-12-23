@@ -1,6 +1,7 @@
 package home.chapter08collection.task04notfrombook;
 
 import home.chapter08collection.task04notfrombook.model.Student;
+import home.chapter08collection.task04notfrombook.service.StudentServiceBehavior;
 import home.chapter08collection.task04notfrombook.service.StudentsService;
 
 import java.util.HashSet;
@@ -30,7 +31,7 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        StudentsService service = new StudentsService();
+        StudentServiceBehavior service = new StudentsService();
 
         Student student01 = service.createStudent("Ануфриева Е.В.", "322", 3, new int[]{5,2,7,8,9,2,6});
         Student student02 = service.createStudent("Ньтонов к.В.", "321", 2, new int[]{7,10,9,10,8,9,7});
