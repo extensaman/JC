@@ -1,6 +1,6 @@
 package home.chapter08collection.task05notfrombook.model;
 
-public class Dog extends Pet{
+public final class Dog extends Pet{
 
     private final String breed;
 

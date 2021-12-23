@@ -1,6 +1,6 @@
 package home.chapter08collection.task05notfrombook.model;
 
-public class Cat extends Pet{
+public final class Cat extends Pet{
 
     private final String color;
 

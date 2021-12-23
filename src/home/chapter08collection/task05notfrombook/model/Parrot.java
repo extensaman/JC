@@ -1,6 +1,6 @@
 package home.chapter08collection.task05notfrombook.model;
 
-public class Parrot extends Pet{
+public final class Parrot extends Pet{
 
     private final String placeOfOrigin;
 
