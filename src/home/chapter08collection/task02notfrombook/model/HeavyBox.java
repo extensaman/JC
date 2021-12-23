@@ -2,7 +2,7 @@ package home.chapter08collection.task02notfrombook.model;
 
 import java.util.Objects;
 
-public class HeavyBox {
+public final class HeavyBox {
 
     private final double size;
     private final double weight;
