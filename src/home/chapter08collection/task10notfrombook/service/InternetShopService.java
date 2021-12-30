@@ -20,13 +20,16 @@ public class InternetShopService implements InternetShopServiceBehavior{
         for(String str : rowData) {
 
             String[] elementData = str.split(ELEMENT_SPLITTER_REGEX);
+
             if (elementData.length != 4) {
                 throw new IllegalArgumentException("Количество элементов в строке " + elementData +
                         " не соответствует протоколу (!= 4), а равно " + elementData.length);
             }
 
             Map<String, Integer> productMap = generalMap.get(elementData[ProtocolData.BUYER.getValue()]);
+
             if (productMap == null) {
+
                 Map<String, Integer> initialProductMap = new TreeMap<>();
                 try {
                     initialProductMap.put(elementData[ProtocolData.PRODUCT.getValue()], Integer.valueOf(
@@ -35,7 +38,9 @@ public class InternetShopService implements InternetShopServiceBehavior{
                     throw new RuntimeException(e);
                 }
                 generalMap.put(elementData[ProtocolData.BUYER.getValue()], initialProductMap);
+
             } else {
+
                 Integer productAmount = productMap.get(elementData[ProtocolData.PRODUCT.getValue()]);
 
                 if (productAmount == null) {
