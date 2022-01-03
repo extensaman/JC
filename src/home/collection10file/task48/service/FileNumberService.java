@@ -37,12 +37,23 @@ public class FileNumberService implements FileNumberServiceBehavior{
         }
         finally {
 
-            if (stream != null) {
-                stream.close();
+            try {
+                if (stream != null) {
+                    stream.close();
+                }
             }
-
-            if (reader != null) {
-                reader.close();
+            catch (IOException e) {
+                throw e;
+            }
+            finally {
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                }
+                catch (IOException e) {
+                    throw e;
+                }
             }
         }
 
