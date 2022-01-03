@@ -3,7 +3,8 @@ package home.chapter08collection.task10notfrombook.service;
 public enum ProtocolData {
     BUYER (1),
     PRODUCT(2),
-    AMOUNT(3);
+    AMOUNT(3),
+    FIELD_COUNT(4);
 
     private int value;
 

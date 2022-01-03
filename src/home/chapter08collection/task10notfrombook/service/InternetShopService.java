@@ -21,7 +21,7 @@ public class InternetShopService implements InternetShopServiceBehavior{
 
             String[] elementData = str.split(ELEMENT_SPLITTER_REGEX);
 
-            if (elementData.length != 4) {
+            if (elementData.length != ProtocolData.FIELD_COUNT.getValue()) {
                 throw new IllegalArgumentException("Количество элементов в строке " + elementData +
                         " не соответствует протоколу (!= 4), а равно " + elementData.length);
             }
