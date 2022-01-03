@@ -1,4 +1,4 @@
-package home.collection10file.task48.service;
+package home.chapter10file.task48.service;
 
 import java.io.BufferedReader;
 import java.io.File;

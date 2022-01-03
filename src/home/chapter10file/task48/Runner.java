@@ -1,7 +1,7 @@
-package home.collection10file.task48;
+package home.chapter10file.task48;
 
-import home.collection10file.task48.service.FileNumberService;
-import home.collection10file.task48.service.FileNumberServiceBehavior;
+import home.chapter10file.task48.service.FileNumberService;
+import home.chapter10file.task48.service.FileNumberServiceBehavior;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
