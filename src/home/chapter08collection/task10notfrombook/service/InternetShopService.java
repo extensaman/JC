@@ -23,7 +23,7 @@ public class InternetShopService implements InternetShopServiceBehavior{
 
             if (elementData.length != ProtocolData.FIELD_COUNT.getValue()) {
                 throw new IllegalArgumentException("Количество элементов в строке " + elementData +
-                        " не соответствует протоколу (!= 4), а равно " + elementData.length);
+                        " не соответствует протоколу (!= " + ProtocolData.FIELD_COUNT.getValue() + "), а равно " + elementData.length);
             }
 
             Map<String, Integer> productMap = generalMap.get(elementData[ProtocolData.BUYER.getValue()]);
