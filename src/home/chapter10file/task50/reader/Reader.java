@@ -12,7 +12,7 @@ public class Reader{
         this.reader = reader;
     }
 
-    public List<String> readPerfom (File file) throws FileNotFoundException {
+    public List<String> readPerform(File file) throws FileNotFoundException {
         return reader.readFromFile (file);
     }
 }

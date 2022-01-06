@@ -16,16 +16,25 @@ import java.util.List;
 
 public class Controller {
 
+    private final Service service;
+    private Writer writer;
+    private Reader reader;
+
+    public Controller(Service service) {
+        this.service = service;
+    }
+
     public void perform (String folderPath,
                          int filesCount,
                          String fileNameSample,
+                         String fileNameSampleExtension,
                          int listSize,
                          int lowNumbersLimitInList,
                          int highNumbersLimitInList,
                          String combineFileName,
-                         String fileNameForFolderFilesList) {
+                         String fileNameForFolderFilesList)
+    {
 
-        Service service = new Service();
         try {
             service.createFolder(folderPath);
         }
@@ -34,50 +43,16 @@ public class Controller {
             return;
         }
 
-
-        File[] files = new File[filesCount];
-
-        WriteBehavior behavior = new BufferedWriterInteger();
-        Writer writer = new Writer(behavior);
-
-        for (int i = 0; i < files.length; i++) {
-
-            files[i] = service.createFile(folderPath + '/' + fileNameSample + i + ".txt");
-            List<Integer> list = service.createRandomIntegerList(listSize, lowNumbersLimitInList, highNumbersLimitInList);
-            try {
-                writer.writePerform(files[i], list);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
+        File[] files = createAndWriteToFiles(folderPath, fileNameSample, fileNameSampleExtension, listSize, lowNumbersLimitInList, highNumbersLimitInList, filesCount);
 
         File combineFile = service.createFile(folderPath + '/' + combineFileName);
 
-        ReadBehavior behavior1 = new BufferedReaderString();
-        Reader reader = new Reader(behavior1);
+        readFromFilesAndWriteToOneFile(combineFile, files);
 
-        List<String> combineList = new LinkedList<>();
-        List<String> fileBuffer = null;
+        createFileForFolderFileList(folderPath, fileNameForFolderFilesList);
+    }
 
-        for (int i = 0; i < files.length; i++) {
-
-            try {
-                fileBuffer = reader.readPerfom(files[i]);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            combineList.addAll(fileBuffer);
-        }
-
-
-        writer.setWritterBehavior(new BufferedWriterString());
-
-        try {
-            writer.writePerform(combineFile, combineList);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
+    private void createFileForFolderFileList(String folderPath, String fileNameForFolderFilesList) {
         List<String> list = service.createListOfFileInDirectory(folderPath);
         File fileForFolderFilesList = service.createFile(folderPath + '/' + fileNameForFolderFilesList);
 
@@ -87,5 +62,54 @@ public class Controller {
         catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void readFromFilesAndWriteToOneFile(File combineFile, File[] files) {
+
+        ReadBehavior behavior1 = new BufferedReaderString();
+        reader = new Reader(behavior1);
+
+        List<String> combineList = new LinkedList<>();
+        List<String> fileBuffer = null;
+
+        for (File file : files) {
+
+            try {
+                fileBuffer = reader.readPerform(file);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            if (fileBuffer != null) {
+                combineList.addAll(fileBuffer);
+            }
+        }
+
+        writer.setWritterBehavior(new BufferedWriterString());
+
+        try {
+            writer.writePerform(combineFile, combineList);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        };
+    }
+
+    private File[] createAndWriteToFiles(String folderPath, String fileNameSample, String fileNameSampleExtension, int listSize, int lowNumbersLimitInList, int highNumbersLimitInList, int filesCount) {
+
+        File[] files = new File[filesCount];
+
+        WriteBehavior behavior = new BufferedWriterInteger();
+        writer = new Writer(behavior);
+
+        for (int i = 0; i < files.length; i++) {
+
+            files[i] = service.createFile(folderPath + '/' + fileNameSample + i + fileNameSampleExtension);
+            List<Integer> list = service.createRandomIntegerList(listSize, lowNumbersLimitInList, highNumbersLimitInList);
+            try {
+                writer.writePerform(files[i], list);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return files;
     }
 }
