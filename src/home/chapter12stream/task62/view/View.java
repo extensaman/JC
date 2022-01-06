@@ -1,15 +1,13 @@
 package home.chapter12stream.task62.view;
 
-import home.chapter12stream.task62.entity.Person;
-
-import java.util.Set;
+import java.util.Collection;
 
 public class View {
 
-    public static void printSet (Set<Person> set) {
+    public static <T> void printCollection (Collection<T> set) {
 
-        System.out.println("Set of Person: ");
-        for (Person person : set) {
+        System.out.println("Collection: ");
+        for (T person : set) {
             System.out.println(person);
         }
     }

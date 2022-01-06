@@ -19,6 +19,18 @@ public final class Person implements Serializable, Comparable<Person> {
         this.age = age;
     }
 
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
