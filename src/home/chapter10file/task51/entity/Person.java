@@ -58,15 +58,7 @@ public final class Person implements Serializable, Comparable<Person> {
 
             if (surnameDelta == 0) {
 
-                int nameDelta = this.name.compareTo(obj.name);
-
-                if (nameDelta == 0) {
-
-                    return 0;
-                }
-                else {
-                    return nameDelta;
-                }
+                return this.name.compareTo(obj.name);
 
             } else {
 

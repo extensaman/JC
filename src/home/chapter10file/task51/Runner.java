@@ -13,6 +13,7 @@ package home.chapter10file.task51;
  */
 
 import home.chapter10file.task51.controller.Controller;
+import home.chapter10file.task51.service.Service;
 
 public class Runner {
 
@@ -25,7 +26,7 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        Controller controller = new Controller();
+        Controller controller = new Controller(new Service());
 
         controller.perform(
                 PERSON_COUNT,

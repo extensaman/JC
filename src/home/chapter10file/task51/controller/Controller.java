@@ -12,9 +12,13 @@ import java.util.TreeSet;
 
 public class Controller {
 
-    public void perform (int personCount, String filePath, int surnameLength, int nameLength, int lowAgeLimit, int highAgeLimit) {
+    private final Service service;
 
-        Service service = new Service();
+    public Controller(Service service) {
+        this.service = service;
+    }
+
+    public void perform (int personCount, String filePath, int surnameLength, int nameLength, int lowAgeLimit, int highAgeLimit) {
 
         Set<Person> set = new TreeSet<>();
 
@@ -28,12 +32,12 @@ public class Controller {
 
         writer.writeObjectSet(set,file);
 
-        View.printSet(set);
+        View.printCollection(set);
         set.clear();
 
         MyReader reader = new MyReader();
         set = reader.readObjectSet(file);
 
-        View.printSet(set);
+        View.printCollection(set);
     }
 }
