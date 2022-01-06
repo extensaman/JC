@@ -1,4 +1,4 @@
-package home.chapter10file.task51.entity;
+package home.chapter12stream.task62.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -25,7 +25,7 @@ public final class Person implements Serializable, Comparable<Person> {
             return true;
         }
 
-        if (this.getClass() != o.getClass() || o == null) {
+        if (o == null || this.getClass() != o.getClass()) {
             return false;
         }
 
