@@ -2,12 +2,24 @@ package home.chapter12stream.task62.service;
 
 import home.chapter12stream.task62.entity.Person;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class Service {
 
     public static final String PREFFIX = "абвгдежзиклмнопрстуфхцчшщэюя";
     public static final String SURNAME_POSTFIX = "ов";
+
+    public Set<Person> generatePersonSet (int personCount, int surnameLength, int nameLength, int lowAgeLimit, int highAgeLimit) {
+
+        Set<Person> set = new HashSet<>();
+
+        while (set.size() < personCount) {
+            set.add(createRandomPerson(surnameLength, nameLength, lowAgeLimit, highAgeLimit));
+        }
+        return set;
+    }
 
     public Person createRandomPerson (int surnameLength, int nameLength, int lowAgeLimit, int highAgeLimit) {
 
