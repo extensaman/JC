@@ -3,6 +3,7 @@ package home.chapter12stream.task62.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
+
 public final class Person implements Serializable, Comparable<Person> {
 
     private final String surname;
@@ -17,6 +18,18 @@ public final class Person implements Serializable, Comparable<Person> {
         this.surname = surname;
         this.name = name;
         this.age = age;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     @Override
