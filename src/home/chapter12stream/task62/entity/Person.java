@@ -3,6 +3,7 @@ package home.chapter12stream.task62.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
+
 public final class Person implements Serializable, Comparable<Person> {
 
     private final String surname;

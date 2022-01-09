@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-
 public class Service {
 
     public static final String PREFFIX = "абвгдежзиклмнопрстуфхцчшщэюя";

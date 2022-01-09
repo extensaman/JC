@@ -1,5 +1,6 @@
 package home.chapter12stream.task62;
 
+
 /**
  * Раздел "Lambda & Stream API"
  * Задание №62
