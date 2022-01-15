@@ -1,7 +1,6 @@
 package home.chapter11thread.task57;
 
 import java.util.Queue;
-import java.util.Random;
 
 public class Store {
 
@@ -13,13 +12,11 @@ public class Store {
     public static final int LIMIT_FOR_CONSUMERS = 1;
     public static final int WAKE_UP_FOR_PRODUCERS = 80;
 
-    private final Queue<Integer> queque;
-    private final Random random;
+    private final Queue<Integer> queue;
     private volatile int operationsCount;
 
-    public Store(Queue<Integer> queque) {
-        this.queque = queque;
-        this.random = new Random();
+    public Store(Queue<Integer> queue) {
+        this.queue = queue;
         this.operationsCount = 0;
     }
 
@@ -31,7 +28,7 @@ public class Store {
 
         synchronized (lock) {
 
-            while (queque.size() >= WAKE_UP_FOR_PRODUCERS) {
+            while (queue.size() >= WAKE_UP_FOR_PRODUCERS) {
 
                 try {
                     lock.wait();
@@ -41,9 +38,9 @@ public class Store {
 
             }
             int putElement = Utility.generateRandomInteger();
-            queque.add(putElement);
+            queue.add(putElement);
             operationsCount++;
-            System.out.println("    >>> " + Thread.currentThread().getName() + " PUTTED " + putElement + ", Queue size = " + queque.size() + ", operations count = " + operationsCount);
+            System.out.println("    >>> " + Thread.currentThread().getName() + " PUTTED " + putElement + ", Queue size = " + queue.size() + ", operations count = " + operationsCount);
             lock.notifyAll();
             return true;
         }
@@ -54,7 +51,7 @@ public class Store {
 
         synchronized (lock) {
 
-            while (queque.size() < LIMIT_FOR_CONSUMERS) {
+            while (queue.size() < LIMIT_FOR_CONSUMERS) {
 
                 try {
                     lock.wait();
@@ -63,10 +60,10 @@ public class Store {
                 }
             }
 
-            Integer getElement = queque.poll();
+            Integer getElement = queue.poll();
             operationsCount++;
-            System.out.println("<<<     " + Thread.currentThread().getName() + " GETTED " + getElement + ", Queue size = " + queque.size() + ", operations count = " + operationsCount);
-            if (queque.size() <= WAKE_UP_FOR_PRODUCERS) {
+            System.out.println("<<<     " + Thread.currentThread().getName() + " GETTED " + getElement + ", Queue size = " + queue.size() + ", operations count = " + operationsCount);
+            if (queue.size() <= WAKE_UP_FOR_PRODUCERS) {
                 lock.notifyAll();
             }
             return true;
