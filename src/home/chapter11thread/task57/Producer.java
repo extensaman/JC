@@ -11,9 +11,7 @@ public class Producer implements Runnable{
     @Override
     public void run(){
 
-        while(!Thread.currentThread().isInterrupted()) {
-            store.put();
-        }
+        while(store.put());
+
     }
-    
 }

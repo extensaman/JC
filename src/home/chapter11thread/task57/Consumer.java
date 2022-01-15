@@ -1,6 +1,6 @@
 package home.chapter11thread.task57;
 
-public class Consumer implements Runnable{
+public class Consumer implements Runnable {
 
     private final Store store;
 
@@ -9,10 +9,8 @@ public class Consumer implements Runnable{
     }
 
     @Override
-    public void run(){
+    public void run() {
 
-        while(!Thread.currentThread().isInterrupted()) {
-            store.get();
-        }
+        while (store.get());
     }
 }

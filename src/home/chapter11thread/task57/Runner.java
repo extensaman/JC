@@ -27,10 +27,12 @@ public class Runner {
     public static final int OPERATIONS_COUNT_LIMIT = 10_000;
     public static final String PRODUCER_NAME = "Producer #";
     public static final String CONSUMER_NAME = "Consumer #";
+    public static final int INERTIA_TIME = 2000;
 
     public static void main(String[] args) {
 
-        Store store = new Store(Utility.generateRandomQueue(DEFAULT_ELEMENT_COUNT), new Object());
+
+        Store store = new Store(Utility.generateRandomQueue(DEFAULT_ELEMENT_COUNT));
         Set<Thread> threadList = new HashSet<>();
 
         for (int i = 0; i < PRODUCERS_COUNT; i++) {
@@ -53,6 +55,16 @@ public class Runner {
         System.out.println("Threads are interrupting...");
         for (Thread thread : threadList) {
             thread.interrupt();
+        }
+
+        try {
+            Thread.sleep(INERTIA_TIME);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        for (Thread thread : threadList) {
+            System.out.println(thread.getName() + " " + thread.getState());
         }
     }
 }
