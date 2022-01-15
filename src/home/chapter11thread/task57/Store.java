@@ -38,7 +38,7 @@ public class Store {
 
             }
             int putElement = Utility.generateRandomInteger();
-            queue.add(putElement);
+            queue.offer(putElement);
             operationsCount++;
             System.out.println("    >>> " + Thread.currentThread().getName() + " PUTTED " + putElement + ", Queue size = " + queue.size() + ", operations count = " + operationsCount);
             lock.notifyAll();

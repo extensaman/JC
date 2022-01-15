@@ -23,7 +23,7 @@ public class Runner {
 
     public static final int PRODUCERS_COUNT = 3;
     public static final int CONSUMERS_COUNT = 2;
-    public static final int DEFAULT_ELEMENT_COUNT = 100;
+    public static final int DEFAULT_ELEMENT_COUNT = 200;
     public static final int OPERATIONS_COUNT_LIMIT = 10_000;
     public static final String PRODUCER_NAME = "Producer #";
     public static final String CONSUMER_NAME = "Consumer #";
