@@ -2,7 +2,7 @@ package home.chapter11thread.task56;
 
 public class One {
 
-    synchronized void heavyJob (Two two) {
+    public synchronized void heavyJob (Two two) {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -12,7 +12,7 @@ public class One {
         two.calculateTwo();
         System.out.println("После вызова two.calculateTwo() класса One");
     }
-    synchronized void calculateOne() {
+    public synchronized void calculateOne() {
         System.out.println("Calculate One");
     }
 }
