@@ -5,17 +5,26 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class MyWritter {
+public class MyWriter {
 
     private final File file;
     private BufferedWriter bw;
     private FileWriter fw;
 
-    public MyWritter(String fileName) {
+    private final Object lock = new Lock();
+
+    public MyWriter(String fileName) {
         this.file = new File(fileName);
     }
 
-    public boolean openFile(){
+    public void openFile() throws IOException{
+
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw e;
+        }
 
         try {
             fw = new FileWriter(file);
@@ -23,12 +32,11 @@ public class MyWritter {
         catch (IOException e)
         {
             e.printStackTrace();
-            return false;
+            throw e;
         }
 
         bw = new BufferedWriter(fw);
 
-        return true;
     }
 
     public void closeFile() {
@@ -50,12 +58,16 @@ public class MyWritter {
 
     public void writeString(String s) {
 
-        try {
-            bw.append(s);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
+        synchronized (lock) {
+
+            try {
+                bw.append(s);
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
+    private final static class Lock{}
 }
