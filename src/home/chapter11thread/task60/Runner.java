@@ -57,16 +57,13 @@ public class Runner {
             e.printStackTrace();
         }
 
-        if (futureList == null) {
-            service.shutdown();
-            writter.closeFile();
+        if (futureList != null) {
+            getFuture(futureList);
+            System.out.println("\nAll tasks have been completed\n");
+        } else {
             System.out.println("FutureList is null");
-            return;
         }
 
-        getFuture(futureList);
-
-        System.out.println("\nAll tasks have been completed\n");
         service.shutdown();
         writter.closeFile();
     }

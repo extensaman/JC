@@ -42,12 +42,18 @@ public class MyWriter {
     public void closeFile() {
 
         try {
+            if (bw == null) {
+                return;
+            }
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
         finally {
             try {
+                if (fw == null) {
+                    return;
+                }
                 fw.close();
             }
             catch (IOException e) {
