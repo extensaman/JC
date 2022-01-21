@@ -20,15 +20,12 @@ public class CallableTask implements Callable<Result> {
             list = Utility.createFilesWithRandomString(Thread.currentThread().getName(), FILES_COUNT);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            Thread.currentThread().interrupt();
         }
 
-        Random random = new Random();
-
         try {
-            Thread.sleep(random.nextInt(MAX_SLEEP_TIME - MIN_SLEEP_TIME) + MIN_SLEEP_TIME);
+            Thread.sleep(Utility.RANDOM.nextInt(MAX_SLEEP_TIME - MIN_SLEEP_TIME) + MIN_SLEEP_TIME);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            e.printStackTrace();
         }
 
         System.out.println("\nPRINT FROM THREAD >> "
