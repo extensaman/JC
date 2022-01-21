@@ -17,7 +17,7 @@ public class MyWriter {
         this.file = new File(fileName);
     }
 
-    public void openFile() throws IOException{
+    public void openFile() throws IOException {
 
         try {
             file.createNewFile();
@@ -28,52 +28,54 @@ public class MyWriter {
 
         try {
             fw = new FileWriter(file);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
             throw e;
         }
 
-        bw = new BufferedWriter(fw);
-
-    }
-
-    public void closeFile() {
-
         try {
-            if (bw == null) {
-                return;
-            }
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            bw = new BufferedWriter(fw);
         }
-        finally {
+        catch (Exception e)
+            {
+                e.printStackTrace();
+                throw e;
+            }
+        }
+
+        public void closeFile () {
+
             try {
-                if (fw == null) {
+                if (bw == null) {
                     return;
                 }
-                fw.close();
-            }
-            catch (IOException e) {
+                bw.close();
+            } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    if (fw == null) {
+                        return;
+                    }
+                    fw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
-    }
 
-    public void writeString(String s) {
+        public void writeString (String s){
 
-        synchronized (lock) {
+            synchronized (lock) {
 
-            try {
-                bw.append(s);
-            }
-            catch (IOException e) {
-                e.printStackTrace();
+                try {
+                    bw.append(s);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
-    }
 
-    private final static class Lock{}
-}
+        private final static class Lock {
+        }
+    }
