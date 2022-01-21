@@ -1,9 +1,6 @@
 package home.chapter11thread.task60.writter;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class MyWriter {
 
@@ -17,7 +14,7 @@ public class MyWriter {
         this.file = new File(fileName);
     }
 
-    public void openFile() throws IOException {
+    public void openFile() throws Exception {
 
         try {
             file.createNewFile();
@@ -39,6 +36,7 @@ public class MyWriter {
         catch (Exception e)
             {
                 e.printStackTrace();
+                closeWriter(fw);
                 throw e;
             }
         }
@@ -53,14 +51,18 @@ public class MyWriter {
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
-                try {
-                    if (fw == null) {
-                        return;
-                    }
-                    fw.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                closeWriter(fw);
+            }
+        }
+
+        private void closeWriter(Writer stream) {
+            try {
+                if (stream == null) {
+                    return;
                 }
+                stream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
 

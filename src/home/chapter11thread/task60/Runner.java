@@ -39,7 +39,7 @@ public class Runner {
 
         try {
             writter.openFile();
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Error while opening file " + FILE_NAME);
             return;
         }
