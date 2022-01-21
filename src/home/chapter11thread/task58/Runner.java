@@ -39,12 +39,18 @@ public class Runner {
             e.printStackTrace();
         }
 
-        if (futureList == null) {
-            service.shutdown();
+        if (futureList != null) {
+            getFuture(futureList);
+            System.out.println("\nAll tasks have been completed\n");
+        } else {
             System.out.println("FutureList is null");
-            return;
         }
 
+        service.shutdown();
+
+    }
+
+    private static void getFuture(List<Future<Result>> futureList) {
         while (futureList.size() > 0) {
 
             Iterator<Future<Result>> iterator = futureList.iterator();
@@ -74,8 +80,5 @@ public class Runner {
                 }
             }
         }
-        System.out.println("\nAll tasks have being done\n");
-        service.shutdown();
-
     }
 }
