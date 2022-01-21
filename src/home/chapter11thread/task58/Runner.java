@@ -39,6 +39,12 @@ public class Runner {
             e.printStackTrace();
         }
 
+        if (futureList == null) {
+            service.shutdown();
+            System.out.println("FutureList is null");
+            return;
+        }
+
         while (futureList.size() > 0) {
 
             Iterator<Future<Result>> iterator = futureList.iterator();
