@@ -21,6 +21,7 @@ public class Runner {
     public static final int YEAR = 2022;
     public static final int DAY_OF_MONTH = 1;
     public static final int MONTHS_TO_ADD = 1;
+    public static final String PATTERN = "d::MMMM::uuuu";
 
     public static void main(String[] args) {
 
@@ -31,7 +32,7 @@ public class Runner {
         LocalDate date = LocalDate.of(YEAR,m, DAY_OF_MONTH) ;
 
         List<String> list = date.datesUntil(date.plusMonths(MONTHS_TO_ADD))
-                                .map(d -> d.format(DateTimeFormatter.ofPattern("d::MMMM::uuuu")))
+                                .map(d -> d.format(DateTimeFormatter.ofPattern(PATTERN)))
                                 .collect(Collectors.toList());
 
         Output.printList(list);
