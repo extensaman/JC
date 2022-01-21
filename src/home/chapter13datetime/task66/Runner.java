@@ -18,9 +18,9 @@ public class Runner {
     public static final int DAYS_TO_SUBTRACT = 60;
     public static final String PATTERN = "d::MMMM:uuuu";
 
-    private static final LocalDate date = LocalDate.now();
-
     public static void main(String[] args) {
+
+        LocalDate date = LocalDate.now();
 
         System.out.println("Сегодня " + formatDate(date));
         System.out.println("60 дней назад было " + formatDate(date.minusDays(DAYS_TO_SUBTRACT)));
