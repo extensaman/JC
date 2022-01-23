@@ -17,7 +17,7 @@ public class SyncEntity implements Runnable{
             try {
                 Thread.sleep(MILLIS);
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+                e.printStackTrace();
             }
             System.out.println(Thread.currentThread().getName() + " woke up");
         }
