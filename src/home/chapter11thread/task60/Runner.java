@@ -2,7 +2,6 @@ package home.chapter11thread.task60;
 
 import home.chapter11thread.task60.writter.MyWriter;
 
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
