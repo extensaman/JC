@@ -25,7 +25,7 @@ public class CallableTask implements Callable<Result> {
         try {
             Thread.sleep(random.nextInt(MAX_SLEEP_TIME - MIN_SLEEP_TIME) + MIN_SLEEP_TIME);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            return null;
         }
 
         int sum = list.stream().mapToInt(Integer::intValue).sum();
