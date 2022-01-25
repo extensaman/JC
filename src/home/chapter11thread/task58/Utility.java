@@ -36,12 +36,7 @@ public class Utility {
 
     public static List<String> createFilesWithRandomString(final String threadName, final int filesCount) throws FileNotFoundException {
 
-        String newDirName = DEFAULT_PATH + threadName + "/" + new SimpleDateFormat("HH-mm-ss-S").format(new Date());
-        File newDir = new File(newDirName);
-
-        if (!newDir.mkdirs()) {
-            throw new FileNotFoundException();
-        }
+        String newDirName = createFolderForThread(threadName);
 
         List<String> list = new ArrayList<>();
 
@@ -62,5 +57,15 @@ public class Utility {
             list.add(fileName);
         }
         return list;
+    }
+
+    private static String createFolderForThread(String threadName) throws FileNotFoundException {
+        String newDirName = DEFAULT_PATH + threadName + "/" + new SimpleDateFormat("HH-mm-ss-S").format(new Date());
+        File newDir = new File(newDirName);
+
+        if (!newDir.mkdirs()) {
+            throw new FileNotFoundException();
+        }
+        return newDirName;
     }
 }
