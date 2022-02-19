@@ -24,8 +24,6 @@ public class Runner {
 
         System.out.println("Сегодня " + formatDate(DATE));
         System.out.println("60 дней назад было " + formatDate(DATE.minusDays(DAYS_TO_SUBTRACT)));
-        System.out.println("Lopata");
-        System.out.println("Test3");
 
     }
 
